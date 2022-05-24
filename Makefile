@@ -56,6 +56,8 @@ export IPIC
 export TCM
 export SIM_CFG_DEF
 
+ARCH := IM
+
 ARCH_lowercase = $(shell echo $(ARCH) | tr A-Z a-z)
 BUS_lowercase  = $(shell echo $(BUS)  | tr A-Z a-z)
 
@@ -80,7 +82,8 @@ else
     endif
 endif
 
-override ARCH=$(ARCH_tmp)
+override ARCH=im
+#$(ARCH_tmp)
 
 # Use this parameter to enable tracelog
 TRACE ?= 0
@@ -202,6 +205,8 @@ echo_out: tests
 	@echo "$$(cat $(test_results))"
 
 tests: $(TARGETS)
+
+ARCH = IM
 
 $(test_info): clean_test_list clean_hex tests
 	cd $(bld_dir)
