@@ -272,6 +272,26 @@ end
 `endif // SCR1_DBG_EN
 
 
+reg_fwrite u_reg_fwrite (
+    .clk_i                  (clk                                                    ),
+    .rstn_i                 (rst_n                                                  ),
+    .rd_en                  (i_top.i_core_top.i_pipe_top.i_pipe_exu.exu2mprf_w_req_o                        ),
+    .rd_addr                (i_top.i_core_top.i_pipe_top.i_pipe_exu.exu2mprf_rd_addr_o[4:0]                 ),
+    .rd_wdata               (i_top.i_core_top.i_pipe_top.i_pipe_exu.exu2mprf_rd_data_o[31:0]                ),
+    .pc                     (i_top.i_core_top.i_pipe_top.i_pipe_exu.exu2pipe_pc_curr_o[31:0]                ),
+    .mem_ren                ('d0                                                    ),
+    .mem_raddr              ('d0                                                    ),
+    .mem_wen                ('d0                                                    ),
+    .mem_waddr              ('d0                                                    ),
+    .mem_wdata              ('d0                                                    ),
+    
+    .wrd_en1                ('d0                                                    ),
+    .wrd_add1               ('d0                                                    ),
+    .wrd_data1              ('d0                                                    ),
+    .wrd_en2                ('d0                                                    ),
+    .wrd_add2               ('d0                                                    ),
+    .wrd_data2              ('d0                                                    )
+);
 
 //-------------------------------------------------------------------------------
 // Run tests
