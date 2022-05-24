@@ -192,7 +192,7 @@ endif
 # Targets
 .PHONY: tests run_modelsim run_vcs run_ncsim run_verilator run_verilator_wf
 
-default: clean_test_list run_verilator
+default: clean_test_list run_vcs
 
 clean_test_list:
 	rm -f $(test_info)
@@ -305,6 +305,8 @@ run_verilator_wf: $(test_info)
 	printf "Simulation performed on $$(verilator -version) \n" ;\
 	printf "                          Test               | build | simulation \n" ; \
 	printf "$$(cat $(test_results)) \n"
+verdi:
+	$(MAKE) -C $(root_dir)/sim build_verdi
 clean:
 	$(RM) -R $(root_dir)/build/*
 #	$(MAKE) -C $(tst_dir)/benchmarks/dhrystone21 clean

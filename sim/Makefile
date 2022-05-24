@@ -54,6 +54,7 @@ build_vcs: $(sv_list)
 	+define+SCR1_TRGT_SIMULATION \
 	+define+$(SIM_TRACE_DEF) \
 	+define+$(SIM_CFG_DEF) \
+	-fsdb \
 	-nc \
 	-debug_all \
 	$(SIM_BUILD_OPTS) \
@@ -125,4 +126,11 @@ build_verilator_wf: $(sv_list)
 	cd verilator; \
 	$(MAKE) -f V$(top_module).mk;
 
+build_verdi: $(sv_list)
+	cd $(verdi_bld_dir); \
+	verdi \
+	-incdir $(rtl_inc_dir) \
+	-incdir $(rtl_inc_tb_dir) \
+	-sv \
+	$(sv_list) &
 

@@ -146,6 +146,14 @@ module scr1_top_axi (
     input   logic                                   io_axi_dmem_rvalid,
     output  logic                                   io_axi_dmem_rready
 );
+//-------------------------------------------------------------------------------
+// Dump FSDB
+//-------------------------------------------------------------------------------
+
+initial begin
+  $fsdbDumpfile("TOP_AXI.fsdb");
+  $fsdbDumpvars("+all");
+end
 
 //-------------------------------------------------------------------------------
 // Local parameters
