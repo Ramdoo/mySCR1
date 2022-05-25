@@ -65,7 +65,7 @@ module reg_fwrite(
             $fclose(write_file);
         end else if ( reg_mem_wen!=0 ) begin
             write_file = $fopen("./reg_status_hw.txt","a");
-            $fdisplay(write_file, "%h (%02d %s %h) (%b %h %h | %h)",reg_pc,0,"000",32'd0,reg_mem_wen,reg_mem_wadd,reg_mem_wdata,reg_mem_radd);
+            $fdisplay(write_file, "%h (%02d %s %h) (%b %h %h | %h)",reg_pc,0,"000",32'd0,reg_mem_wen,reg_mem_wadd,reg_mem_wdata,32'd0);
             $fclose(write_file);
         end 
     end

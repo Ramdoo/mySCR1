@@ -9,7 +9,7 @@ ENTRY(_start)
 
 MEMORY {
   RAM (rwx) : ORIGIN = 0x0, LENGTH = 64K
-  TCM (rwx) : ORIGIN = 0x00480000, LENGTH = 64K
+  TCM (rwx) : ORIGIN = 0x00010000, LENGTH = 64K
 }
 
 STACK_SIZE = 1024;

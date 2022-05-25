@@ -124,7 +124,8 @@ endif
 export root_dir := $(shell pwd)
 export tst_dir  := $(root_dir)/sim/tests
 export inc_dir  := $(tst_dir)/common
-export bld_dir  := $(root_dir)/build/$(current_goal)_$(BUS)_$(CFG)_$(ARCH)_IPIC_$(IPIC)_TCM_$(TCM)_VIRQ_$(VECT_IRQ)_TRACE_$(TRACE)
+export bld_dir  := $(root_dir)/build/test
+# export bld_dir  := $(root_dir)/build/test/$(current_goal)_$(BUS)_$(CFG)_$(ARCH)_IPIC_$(IPIC)_TCM_$(TCM)_VIRQ_$(VECT_IRQ)_TRACE_$(TRACE)
 
 test_results := $(bld_dir)/test_results.txt
 test_info    := $(bld_dir)/test_info
@@ -238,8 +239,9 @@ clean_hex: | $(bld_dir)
 $(bld_dir):
 	mkdir -p $(bld_dir)
 
-#run_vcs: $(test_info)
-run_vcs:
+sim: $(test_info)
+
+run_vcs: $(test_info)
 	$(MAKE) -C $(root_dir)/sim build_vcs SIM_CFG_DEF=$(SIM_CFG_DEF) SIM_TRACE_DEF=$(SIM_TRACE_DEF) SIM_BUILD_OPTS="$(SIM_BUILD_OPTS)";
 	printf "" > $(test_results);
 	cd $(bld_dir); \
