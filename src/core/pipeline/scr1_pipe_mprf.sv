@@ -63,6 +63,40 @@ logic   [`SCR1_XLEN-1:0]    mprf_int2  [1:`SCR1_MPRF_SIZE-1];
 type_scr1_mprf_v [1:`SCR1_MPRF_SIZE-1]                  mprf_int;
 `endif
 
+// Simulation friendly names
+    wire [31:0] x0_zero_w = mprf_int[32'd0];
+    wire [31:0] x1_ra_w   = mprf_int[32'd1];
+    wire [31:0] x2_sp_w   = mprf_int[32'd2];
+    wire [31:0] x3_gp_w   = mprf_int[32'd3];
+    wire [31:0] x4_tp_w   = mprf_int[32'd4];
+    wire [31:0] x5_t0_w   = mprf_int[32'd5];
+    wire [31:0] x6_t1_w   = mprf_int[32'd6];
+    wire [31:0] x7_t2_w   = mprf_int[32'd7];
+    wire [31:0] x8_s0_w   = mprf_int[32'd8];
+    wire [31:0] x9_s1_w   = mprf_int[32'd9];
+    wire [31:0] x10_a0_w  = mprf_int[32'd10];
+    wire [31:0] x11_a1_w  = mprf_int[32'd11];
+    wire [31:0] x12_a2_w  = mprf_int[32'd12];
+    wire [31:0] x13_a3_w  = mprf_int[32'd13];
+    wire [31:0] x14_a4_w  = mprf_int[32'd14];
+    wire [31:0] x15_a5_w  = mprf_int[32'd15];
+    wire [31:0] x16_a6_w  = mprf_int[32'd16];
+    wire [31:0] x17_a7_w  = mprf_int[32'd17];
+    wire [31:0] x18_s2_w  = mprf_int[32'd18];
+    wire [31:0] x19_s3_w  = mprf_int[32'd19];
+    wire [31:0] x20_s4_w  = mprf_int[32'd20];
+    wire [31:0] x21_s5_w  = mprf_int[32'd21];
+    wire [31:0] x22_s6_w  = mprf_int[32'd22];
+    wire [31:0] x23_s7_w  = mprf_int[32'd23];
+    wire [31:0] x24_s8_w  = mprf_int[32'd24];
+    wire [31:0] x25_s9_w  = mprf_int[32'd25];
+    wire [31:0] x26_s10_w = mprf_int[32'd26];
+    wire [31:0] x27_s11_w = mprf_int[32'd27];
+    wire [31:0] x28_t3_w  = mprf_int[32'd28];
+    wire [31:0] x29_t4_w  = mprf_int[32'd29];
+    wire [31:0] x30_t5_w  = mprf_int[32'd30];
+    wire [31:0] x31_t6_w  = mprf_int[32'd31];
+
 //------------------------------------------------------------------------------
 // MPRF control logic
 //------------------------------------------------------------------------------

@@ -178,6 +178,7 @@ _run_test:
 
 #define RVTEST_PASS                                                     \
         fence;                                                          \
+        lui x30, 0xABABA;                                               \
         mv a1, TESTNUM;                                                 \
         li  a0, 0x0;                                                    \
         ecall
@@ -185,6 +186,7 @@ _run_test:
 #define TESTNUM x28
 #define RVTEST_FAIL                                                     \
         fence;                                                          \
+        lui x30, 0xFFFFF;                                               \
         mv a1, TESTNUM;                                                 \
         li  a0, 0x1;                                                    \
         ecall

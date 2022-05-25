@@ -215,6 +215,7 @@ end_testcode:                                                           \
 
 #define RVTEST_PASS                                                     \
         RVTEST_SYNC;                                                    \
+        lui x30, 0xABABA;                                               \
         li TESTNUM, 1;                                                  \
         SWSIG (0, TESTNUM);                                             \
         ecall
@@ -223,6 +224,7 @@ end_testcode:                                                           \
 #define RVTEST_FAIL                                                     \
         RVTEST_SYNC;                                                    \
 1:      beqz TESTNUM, 1b;                                               \
+        lui x30, 0xFFFFF;                                               \
         sll TESTNUM, TESTNUM, 1;                                        \
         or TESTNUM, TESTNUM, 1;                                         \
         SWSIG (0, TESTNUM);                                             \

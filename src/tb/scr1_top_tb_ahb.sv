@@ -271,6 +271,15 @@ initial begin
 end
 `endif // SCR1_DBG_EN
 
+reg [2:0]   mem_wen;
+always @(*) begin
+    mem_wen = 'd0;
+    if (i_top.i_core_top.i_pipe_top.i_pipe_exu.i_lsu.dmem_cmd_store) begin
+        mem_wen[0] = i_top.i_core_top.i_pipe_top.i_pipe_exu.i_lsu.dmem_wdth_byte;
+        mem_wen[1] = i_top.i_core_top.i_pipe_top.i_pipe_exu.i_lsu.dmem_wdth_hword;
+        mem_wen[2] = i_top.i_core_top.i_pipe_top.i_pipe_exu.i_lsu.dmem_wdth_word;
+    end
+end
 
 reg_fwrite u_reg_fwrite (
     .clk_i                  (clk                                                    ),
@@ -279,11 +288,11 @@ reg_fwrite u_reg_fwrite (
     .rd_addr                (i_top.i_core_top.i_pipe_top.i_pipe_exu.exu2mprf_rd_addr_o[4:0]                 ),
     .rd_wdata               (i_top.i_core_top.i_pipe_top.i_pipe_exu.exu2mprf_rd_data_o[31:0]                ),
     .pc                     (i_top.i_core_top.i_pipe_top.i_pipe_exu.exu2pipe_pc_curr_o[31:0]                ),
-    .mem_ren                ('d0                                                    ),
-    .mem_raddr              ('d0                                                    ),
-    .mem_wen                ('d0                                                    ),
-    .mem_waddr              ('d0                                                    ),
-    .mem_wdata              ('d0                                                    ),
+    .mem_ren                (i_top.i_core_top.i_pipe_top.i_pipe_exu.i_lsu.lsu_cmd_ff_load   ),
+    .mem_raddr              (i_top.i_core_top.i_pipe_top.i_pipe_exu.i_lsu.lsu2dmem_addr_o[31:0]             ),
+    .mem_wen                (mem_wen                                                ),
+    .mem_waddr              (i_top.i_core_top.i_pipe_top.i_pipe_exu.i_lsu.lsu2dmem_addr_o[31:0]             ),
+    .mem_wdata              (i_top.i_core_top.i_pipe_top.i_pipe_exu.i_lsu.lsu2dmem_wdata_o[31:0]            ),
     
     .wrd_en1                ('d0                                                    ),
     .wrd_add1               ('d0                                                    ),

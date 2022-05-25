@@ -195,7 +195,7 @@ endif
 # Targets
 .PHONY: tests run_modelsim run_vcs run_ncsim run_verilator run_verilator_wf
 
-default: clean_test_list run_vcs
+default: run_vcs
 
 clean_test_list:
 	rm -f $(test_info)
@@ -238,7 +238,8 @@ clean_hex: | $(bld_dir)
 $(bld_dir):
 	mkdir -p $(bld_dir)
 
-run_vcs: $(test_info)
+#run_vcs: $(test_info)
+run_vcs:
 	$(MAKE) -C $(root_dir)/sim build_vcs SIM_CFG_DEF=$(SIM_CFG_DEF) SIM_TRACE_DEF=$(SIM_TRACE_DEF) SIM_BUILD_OPTS="$(SIM_BUILD_OPTS)";
 	printf "" > $(test_results);
 	cd $(bld_dir); \

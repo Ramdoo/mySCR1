@@ -26,7 +26,7 @@ la t0, sc_exit;  \
 jr	 t0;
 
 .pushsection sc_test_section, "ax"
-sc_exit: la t0, SIM_EXIT; jr t0;
+sc_exit: lui x30, 0xABABA;la t0, SIM_EXIT; jr t0;
 .balign 32
 .popsection
 #define sc_pass report_results(0x0)
